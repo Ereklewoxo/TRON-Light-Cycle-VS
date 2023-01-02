@@ -161,10 +161,11 @@ namespace TRON
                         break;
                     Task.Delay(speed).Wait();
                 } while (true);
-                if (P1Crashed)
+                if (P1Crashed && P2Crashed == false)
                     P2Score++;
-                else if (P2Crashed)
+                else if (P2Crashed && P1Crashed == false)
                     P1Score++;
+                Console.WriteLine($"{Graphics.Colors()[0]} P1 {Graphics.HealthBarP1()[P1Score]}{Graphics.Colors()[1]}                                    P2 {Graphics.HealthBarP2()[P2Score]} ");
                 Console.SetCursorPosition(0, Console.CursorTop - -7);
                 if (P1Score == 5 || P2Score == 5)
                 {
