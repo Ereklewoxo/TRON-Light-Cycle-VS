@@ -1,2 +1,2 @@
 # TRON Light Cycle VS
-# C# console game 
+C# 2-player console game 
