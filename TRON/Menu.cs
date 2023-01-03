@@ -26,7 +26,7 @@
             bool ready = false;
             Console.WriteLine("" +
                 $"{H} P1 - {P1}▒▒▒▒▒▒▒██       {P2}██▒▒▒▒▒▒▒{H} - P2 \n\n" +
-                $"{P1}      ▲ ◄ ▼ ►           {P2}W A S D\n{B}" +
+                $"{P1}      ▲ ◄ ▼ ► 0       {P2}V W A S D\n{B}" +
                 "            └───┬───────┘\n" +
                 "  ┌─────────────┘\n" +
                 "  PRESS ANY OF THESE KEYS TO START");

@@ -11,7 +11,7 @@
         public static List<string> Colors()
         {
             var colors = new List<string>();
-            colors.Add("\x1b[38;2;18;255;205m");
+            colors.Add("\x1b[38;2;125;253;254m");
             colors.Add("\x1b[38;2;255;180;10m");
             colors.Add("\x1b[38;2;10;18;38m");
             colors.Add("\x1b[38;2;50;255;70m");
@@ -24,24 +24,23 @@
         public static List<string> HealthBarP1()
         {
             var healthBar = new List<string>();
-            healthBar.Add("\x1b[38;2;10;18;38m♦ ♦ ♦ ♦ ♦");
-            healthBar.Add("\x1b[38;18;255;205m♦ \x1b[38;2;10;18;38m♦ ♦ ♦ ♦");
-            healthBar.Add("\x1b[38;18;255;205m♦ ♦ \x1b[38;2;10;18;38m♦ ♦ ♦");
-            healthBar.Add("\x1b[38;18;255;205m♦ ♦ ♦ \x1b[38;2;10;18;38m♦ ♦");
-            healthBar.Add("\x1b[38;18;255;205m♦ ♦ ♦ ♦ \x1b[38;2;10;18;38m♦");
-            healthBar.Add("\x1b[38;2;18;255;205m♦ ♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[2]}♦ ♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[0]}♦ {Colors()[2]}♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[0]}♦ ♦ {Colors()[2]}♦ ♦ ♦");
+            healthBar.Add($"{Colors()[0]}♦ ♦ ♦ {Colors()[2]}♦ ♦");
+            healthBar.Add($"{Colors()[0]}♦ ♦ ♦ ♦ {Colors()[2]}♦");
+            healthBar.Add($"{Colors()[0]}♦ ♦ ♦ ♦ ♦");
             return healthBar;
-
         }
         public static List<string> HealthBarP2()
         {
             var healthBar = new List<string>();
-            healthBar.Add("\x1b[38;2;10;18;38m♦ ♦ ♦ ♦ ♦");
-            healthBar.Add("\x1b[38;2;255;180;10m♦ \x1b[38;2;10;18;38m♦ ♦ ♦ ♦");
-            healthBar.Add("\x1b[38;2;255;180;10m♦ ♦ \x1b[38;2;10;18;38m♦ ♦ ♦");
-            healthBar.Add("\x1b[38;2;255;180;10m♦ ♦ ♦ \x1b[38;2;10;18;38m♦ ♦");
-            healthBar.Add("\x1b[38;2;255;180;10m♦ ♦ ♦ ♦ \x1b[38;2;10;18;38m♦");
-            healthBar.Add("\x1b[38;2;255;180;10m♦ ♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[2]}♦ ♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[1]}♦ {Colors()[2]}♦ ♦ ♦ ♦");
+            healthBar.Add($"{Colors()[1]}♦ ♦ {Colors()[2]}♦ ♦ ♦");
+            healthBar.Add($"{Colors()[1]}♦ ♦ ♦ {Colors()[2]}♦ ♦");
+            healthBar.Add($"{Colors()[1]}♦ ♦ ♦ ♦ {Colors()[2]}♦");
+            healthBar.Add($"{Colors()[1]}♦ ♦ ♦ ♦ ♦");
             return healthBar;
         }
         public static void Countdown()

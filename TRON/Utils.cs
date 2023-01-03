@@ -10,6 +10,7 @@
                 ConsoleKey.UpArrow,
                 ConsoleKey.LeftArrow,
                 ConsoleKey.DownArrow,
+                ConsoleKey.NumPad0
             };
             return p1keys;
         }
@@ -20,7 +21,8 @@
                 ConsoleKey.D,
                 ConsoleKey.W,
                 ConsoleKey.A,
-                ConsoleKey.S
+                ConsoleKey.S,
+                ConsoleKey.V
             };
             return p2keys;
         }

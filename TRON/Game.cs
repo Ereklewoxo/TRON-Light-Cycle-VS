@@ -22,6 +22,8 @@ namespace TRON
                 int P2Direction = 2;
                 bool P1Crashed = false;
                 bool P2Crashed = false;
+                bool P1TailToggle = true;
+                bool P2TailToggle = true;
                 int speed = 46;
                 do
                 {
@@ -43,6 +45,12 @@ namespace TRON
                                 P1Direction = 2;
                             else if (key.Key == ConsoleKey.LeftArrow && P1Direction != 1)
                                 P1Direction = 3;
+                            else if (key.Key == ConsoleKey.NumPad0)
+                            {
+                                P1TailX.Clear();
+                                P1TailY.Clear();
+                                P1TailToggle = !P1TailToggle;
+                            }
                         }
                         else if (Utils.P2Keys().Contains(key.Key))
                         {
@@ -54,6 +62,12 @@ namespace TRON
                                 P2Direction = 2;
                             else if (key.Key == ConsoleKey.A && P2Direction != 1)
                                 P2Direction = 3;
+                            else if (key.Key == ConsoleKey.V)
+                            {
+                                P2TailX.Clear();
+                                P2TailY.Clear();
+                                P2TailToggle = !P2TailToggle;
+                            }
                         }
                     }
                     if (Console.KeyAvailable)
@@ -69,6 +83,12 @@ namespace TRON
                                 P1Direction = 2;
                             else if (key.Key == ConsoleKey.LeftArrow && P1Direction != 1)
                                 P1Direction = 3;
+                            else if (key.Key == ConsoleKey.NumPad0)
+                            {
+                                P1TailX.Clear();
+                                P1TailY.Clear();
+                                P1TailToggle = !P1TailToggle;
+                            }
                         }
                         else if (Utils.P2Keys().Contains(key.Key))
                         {
@@ -80,6 +100,12 @@ namespace TRON
                                 P2Direction = 2;
                             else if (key.Key == ConsoleKey.A && P2Direction != 1)
                                 P2Direction = 3;
+                            else if (key.Key == ConsoleKey.V)
+                            {
+                                P2TailX.Clear();
+                                P2TailY.Clear();
+                                P2TailToggle = !P2TailToggle;
+                            }
                         }
                     }
                     //change the direction
@@ -116,11 +142,22 @@ namespace TRON
                     //check game over
                     for (int i = 0; i < P1TailX.Count; i++)
                     {
-                        if ((P1TailX[i] == P1Head[0] && P1TailY[i] == P1Head[1]) || (P2TailX[i] == P1Head[0] && P2TailY[i] == P1Head[1]) || P1Head[0] < 0 || P1Head[0] > Console.WindowWidth / 2 - 1 || P1Head[1] < 0 || P1Head[1] > Console.WindowHeight - 2)
+                        if (P1TailX[i] == P1Head[0] && P1TailY[i] == P1Head[1])
                             P1Crashed = true;
-                        if ((P1TailX[i] == P2Head[0] && P1TailY[i] == P2Head[1]) || (P2TailX[i] == P2Head[0] && P2TailY[i] == P2Head[1]) || P2Head[0] < 0 || P2Head[0] > Console.WindowWidth / 2 - 1 || P2Head[1] < 0 || P2Head[1] > Console.WindowHeight - 2)
+                        if (P1TailX[i] == P2Head[0] && P1TailY[i] == P2Head[1])
                             P2Crashed = true;
                     }
+                    for (int i = 0; i < P2TailX.Count; i++)
+                    {
+                        if (P2TailX[i] == P1Head[0] && P2TailY[i] == P1Head[1])
+                            P1Crashed = true;
+                        if (P2TailX[i] == P2Head[0] && P2TailY[i] == P2Head[1])
+                            P2Crashed = true;
+                    }
+                    if (P1Head[0] < 0 || P1Head[0] > Console.WindowWidth / 2 - 1 || P1Head[1] < 0 || P1Head[1] > Console.WindowHeight - 2)
+                        P1Crashed = true;
+                    if (P2Head[0] < 0 || P2Head[0] > Console.WindowWidth / 2 - 1 || P2Head[1] < 0 || P2Head[1] > Console.WindowHeight - 2)
+                        P2Crashed = true;
                     //build game screen
                     StringBuilder gameScreen = new();
                     for (int y = 0; y < Console.WindowHeight - 1; y++)
@@ -150,10 +187,16 @@ namespace TRON
                             gameScreen.AppendLine();
                     }
                     //update the tail
-                    P1TailX.Add(P1Head[0]);
-                    P1TailY.Add(P1Head[1]);
-                    P2TailX.Add(P2Head[0]);
-                    P2TailY.Add(P2Head[1]);
+                    if (P1TailToggle)
+                    {
+                        P1TailX.Add(P1Head[0]);
+                        P1TailY.Add(P1Head[1]);
+                    }
+                    if (P2TailToggle)
+                    {
+                        P2TailX.Add(P2Head[0]);
+                        P2TailY.Add(P2Head[1]);
+                    }
                     //update game screen
                     Console.Write(gameScreen);
                     Console.SetCursorPosition(0, Console.CursorTop - (Console.WindowHeight - 1));
